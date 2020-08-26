@@ -204,9 +204,6 @@ bad_clean.name = "- Not Going or Issues -"
 # ----------------------------------------
 
 
-# List of ClientDrugIngested Adjusted Values that are Reverification Submissions
-rever_lst = ['Pinnacle', 'TRT', 'Fluoroquinolone', 'Hog Farm', 'Stryker', 'TVM', 'Infuse', 'Invokana', 'Cymbalta', 'IVC', 'Mass Med-Mal', 'Abilify', 'Faulty Pacemaker Implant']
-
 # Actual submission results test to see if on rever_lst:
 rever_df = good[(good['CaseId'].isin(init_cases) == False)]
 check_lst = list(rever_df.Submission.unique())
@@ -227,11 +224,11 @@ def sub_adj(x,y):
 
 # Test the actual submission results against the rever_lst:
 print("All good to go reverification submission values and which ones need to be added:")
-sub_adj(check_lst, rever_lst)
+sub_adj(check_lst, CaseNames.rever_lst)
 
 # Test the theoretical submission results against the rever_lst:
 print("All ClientDrugIngested Values and which ones need to be added:")
-sub_adj(check_lst_test, rever_lst)
+sub_adj(check_lst_test, CaseNames.rever_lst)
 
 
 # ----------------------------------------
