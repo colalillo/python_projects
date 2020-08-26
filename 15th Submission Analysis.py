@@ -13,7 +13,7 @@ from datetime import datetime
 import xlsxwriter
 import xlrd
 
-import CaseNames
+import CaseNames  # another python file I don't want on github
 
 
 # ----------------------------------------
