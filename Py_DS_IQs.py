@@ -30,3 +30,18 @@ def chapped_sort(arr, n):
     return fin
 
 chapped_sort(arr, n)
+
+## 1 Calculating percentage of fradulent transactions by day
+
+# Inputs
+df_01 = pd.DataFrame({
+'Store_ID': [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3],
+'Date': ['01/01/2001', '01/01/2001', '01/01/2001', '01/01/2001', '02/01/2001', '02/01/2001', '02/01/2001', '02/01/2001', '03/01/2001', '03/01/2001', '03/01/2001', '03/01/2001'],
+'Status': ['fraud', 'closed', 'fraud', 'open', 'open', 'closed', 'fraud', 'open', 'open', 'closed', 'fraud', 'open'],
+'Revenue': [125, 220, 135, 240, 155, 160, 270, 180, 195, 210, 115, 125]
+})
+
+# Solution
+analys = df_01[df_01.Revenue > 0]
+analys['Fraudulent'] = analys['Status'] == 'fraud'
+final = analys.groupby('Date').Fraudulent.mean()*100
