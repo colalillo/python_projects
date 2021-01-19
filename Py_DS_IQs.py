@@ -1,6 +1,6 @@
 # DSIQ
 
-## 106 Return Alternating List (Highest-Lowest) of Numbers
+###### 104 Return Alternating List (Highest-Lowest) of Numbers
 
 # Inputs
 arr = [10, 2, 11, 3, 7, 4, 1, 6, 15, 2, 5, 9, 8, 14, 12, 13, 17]
@@ -31,7 +31,9 @@ def chapped_sort(arr, n):
 
 chapped_sort(arr, n)
 
-## 1 Calculating percentage of fradulent transactions by day
+
+
+##### 1 Calculating percentage of fradulent transactions by day
 
 # Inputs
 df_01 = pd.DataFrame({
@@ -45,3 +47,18 @@ df_01 = pd.DataFrame({
 analys = df_01[df_01.Revenue > 0]
 analys['Fraudulent'] = analys['Status'] == 'fraud'
 final = analys.groupby('Date').Fraudulent.mean()*100
+
+
+
+###### 106 Sorting Pandas Dataframe by Caloric Density
+
+# Inputs
+raw_data = {'food': ['bacon', 'strawberries', 'banana', 'spinach', 'chicken breast', 'peanuts', 'cereal'], 
+            'grams': [50, 200, 100, 200, 50, 100, 150],
+           'calories': [271, 64, 89, 46, 80, 567, 271]}
+dsx = pd.DataFrame(raw_data, columns = ['food', 'grams', 'calories'])
+
+# Solution
+dsx['density'] = dsx['calories'] / dsx['grams']
+# stp = dsx.sort_values('density', ascending = False)
+stp = dsx.sort_values(['calories', 'density'], ascending = [False, False], inplace = True)
