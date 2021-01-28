@@ -49,6 +49,33 @@ analys['Fraudulent'] = analys['Status'] == 'fraud'
 final = analys.groupby('Date').Fraudulent.mean()*100
 
 
+##### 2 Moving average from a list
+
+# Inputs
+lst = [3, 8, 4, 9, 6, 18, 13, 11, 1, 19]
+n = 4 # number of elements in the list to be averaged
+
+# Solution
+def averages_in_lst(L,n):
+     if len(L) < n:
+         return (None, None)
+
+     now = 0
+
+     for i in range(n):
+         now += L[i]
+
+     low = high = now
+
+     for i in range(n, len(L)):
+         now = now - L[i-n] + L[i]
+         low = min(low, now)
+         high = max(high, now)
+
+     return (low/n, high/n)
+
+# print (averages_in_lst(lst, n))
+
 
 ###### 106 Sorting Pandas Dataframe by Caloric Density
 
